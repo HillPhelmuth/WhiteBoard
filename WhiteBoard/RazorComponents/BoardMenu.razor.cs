@@ -25,7 +25,7 @@ namespace Board.Client.RazorComponents
         [Parameter]
         public EventCallback SaveAsImage { get; set; }
         [Parameter]
-        public EventCallback Clear { get; set; }
+        public EventCallback OnClear { get; set; }
         [Parameter]
         public EventCallback StartNew { get; set; }
 
@@ -47,7 +47,7 @@ namespace Board.Client.RazorComponents
         private void ToggleLineMode() => AppState.LineMode = !AppState.LineMode;
         private void SaveAsImageInvoke() => SaveAsImage.InvokeAsync();
         private void StartNewInvoke() => StartNew.InvokeAsync();
-        private void ClearInvoke() => Clear.InvokeAsync();
+        private void ClearInvoke() => OnClear.InvokeAsync();
         private void ChangeWidth(ChangeEventArgs e) => AppState.MarkerWidth = selectedWidth;
         private void UndoInvoke() => Undo.InvokeAsync();
         private void RedoInvoke() => Redo.InvokeAsync();
@@ -72,11 +72,22 @@ namespace Board.Client.RazorComponents
             else
             {
                 AppState.UserStickyNotes = userNotes;
-            }            
+            }
             AppState.UserStickyNotes.StickyNotes.Add(note);
             _selectOption = "Sticky";
             LocalStorage.SetItem($"{AppState.UserName}-StickyNotes", AppState.UserStickyNotes);
             AppState.StickyNote = note;
+        }
+
+        private async Task ShowOptionsMenu()
+        {
+            var options = new ModalDialogOptions
+            {
+                BackgroundClickToClose = true,
+                ShowCloseButton = true
+            };
+            var result = await ModalService.ShowDialogAsync<OptionsMenu>("Options", options);
+            await InvokeAsync(StateHasChanged);
         }
 
     }

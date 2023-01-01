@@ -7,7 +7,7 @@
     min-height:32px;
     font-size: 75%;    
     max-width:100vw;
-    overflow-x:scroll;
+    overflow-x:auto;
 }
 .head-menu > * {
     max-height:34px;
@@ -29,7 +29,7 @@ option {
 input[type=text]{
     max-width:120px
 }
-@media (max-width: 640.98px){
+@media (max-width: 880.98px){
     span{
         display: none;
     }

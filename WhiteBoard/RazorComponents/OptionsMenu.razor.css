@@ -1,0 +1,10 @@
+﻿.menu-form {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-gap: 1rem;
+    justify-self: center;
+    align-self: center;
+}
+input {
+    max-width: 120px;
+}
