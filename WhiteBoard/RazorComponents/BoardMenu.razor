@@ -1,5 +1,5 @@
 ﻿<div class="head-menu">
-    <select @onchange="ChangeColor">
+    @*<select @onchange="ChangeColor">
         <option value="black" style="background-color:black">Black</option>
         <option value="red" style="background-color:red">Red</option>
         <option value="blue" style="background-color:blue">Blue</option>
@@ -21,7 +21,17 @@
         <option value="Oval">Oval</option>
         <option value="Rectangle">Rectangle</option>
         <option value="Sticky">Sticky Note</option>
-    </select>
+    </select>*@
+    
+    <button @onclick="ShowOptionsMenu">
+       <img src="icons/menu-rounded-32.png" alt="options icon" width="30" height="30"/>
+       
+    </button>
+    <div style="line-height: 14px; font-size: 12px; padding:3px">
+        <div>Width: @AppState.MarkerWidth</div>
+        <div>Dbl-Clk: @AppState.DblClkOption</div>
+    </div>
+    <div style="width: 32px; height: 32px; background-color:@(AppState.Color)"></div>
     <button @onclick="ToggleEraseMode">
         <img src="@ButtonIcon" alt="Button icon" width="30" height="30" />
         <span> @ButtonLabel</span>
