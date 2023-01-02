@@ -83,6 +83,7 @@ namespace Board.Client.RazorComponents
         {
             var options = new ModalDialogOptions
             {
+                Style = "menu-form-modal",
                 BackgroundClickToClose = true,
                 ShowCloseButton = true
             };

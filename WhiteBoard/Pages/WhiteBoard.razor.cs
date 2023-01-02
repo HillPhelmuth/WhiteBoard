@@ -330,7 +330,7 @@ namespace Board.Client.Pages
         }
         private async Task DrawCanvasAsync(double oldX, double oldY, double x, double y)
         {
-            await using var ctx = await _context2D.CreateBatchAsync();
+            await using var ctx = _context2D.CreateBatch();
             await ctx.BeginPathAsync();
             await ctx.MoveToAsync(oldX, oldY);
             await ctx.LineToAsync(x, y);
